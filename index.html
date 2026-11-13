@@ -1,0 +1,197 @@
+<!doctype html>
+<html lang="es">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover">
+<meta name="theme-color" content="#102b46">
+<title>Cancionero San Francisco</title>
+<style>
+:root{--navy:#102b46;--navy2:#183d5d;--gold:#b89455;--cream:#fbf9f4;--ink:#1d2935;--muted:#65717d;--line:#e8e3d9;--white:#fff;--green:#246b55;--shadow:0 5px 20px #102b4610}
+*{box-sizing:border-box}body{margin:0;background:var(--cream);color:var(--ink);font-family:system-ui,-apple-system,BlinkMacSystemFont,"Segoe UI",sans-serif;font-size:16px}
+header{background:linear-gradient(135deg,var(--navy),#1b4261);color:#fff;padding:24px 18px 20px;text-align:center;border-bottom:4px solid var(--gold)}
+.brand-mark{font-size:24px;color:#e1c58d;letter-spacing:5px}.brand{font-family:Georgia,serif;font-size:clamp(25px,6vw,36px);letter-spacing:1px;margin:5px 0}.subtitle{font-size:12px;letter-spacing:2px;color:#e8ddc8;text-transform:uppercase}
+main{max-width:760px;margin:auto;padding:16px 14px 50px}.hero{background:#fff;border:1px solid var(--line);border-radius:18px;padding:17px;box-shadow:var(--shadow);margin:0 0 16px}
+.hero p{margin:0 0 13px;color:var(--muted);font-size:14px}.btn{border:0;border-radius:12px;padding:14px 16px;font-size:15px;font-weight:750;min-height:48px;cursor:pointer;display:inline-flex;align-items:center;justify-content:center;gap:7px;text-decoration:none}
+.btn-primary{background:var(--navy);color:#fff}.btn-gold{background:var(--gold);color:#fff}.btn-light{background:#f3f0e9;color:var(--navy);border:1px solid var(--line)}.btn-green{background:var(--green);color:#fff}.btn-block{width:100%;margin:4px 0}.btn-small{padding:9px 11px;min-height:38px;font-size:13px}
+.actions{display:grid;grid-template-columns:1fr 1fr;gap:9px}.section-title{font:24px Georgia,serif;color:var(--navy);margin:24px 2px 12px}
+.search-row{display:grid;grid-template-columns:1fr 125px;gap:8px;margin-bottom:12px}
+input,select,textarea{width:100%;border:1px solid #d9dfe4;border-radius:11px;background:#fff;padding:13px 12px;font:inherit;color:var(--ink);min-height:48px}
+input:focus,select:focus,textarea:focus{outline:2px solid #b8945566;border-color:var(--gold)}
+.category{border:1px solid var(--line);border-radius:14px;background:#fff;margin:9px 0;overflow:hidden;box-shadow:0 2px 8px #102b4608}
+.cat-head{width:100%;border:0;background:#fff;text-align:left;padding:16px;display:flex;align-items:center;justify-content:space-between;color:var(--navy);font-weight:800;font-size:15px;cursor:pointer}
+.cat-head small{color:var(--muted);font-weight:600}.cat-head .chev{color:var(--gold);font-size:20px}
+.song-list{border-top:1px solid var(--line)}.song{padding:12px 13px;border-bottom:1px solid #f0eee9;display:flex;align-items:center;gap:10px}.song:last-child{border-bottom:0}.song-main{flex:1;min-width:0}.song-name{font-weight:700;font-size:15px;line-height:1.3}.tone{display:inline-block;margin-top:5px;border-radius:6px;background:#f4efe4;color:#765c2f;padding:3px 8px;font-size:12px;font-weight:800;letter-spacing:.3px}.song .btn{flex-shrink:0}
+.hidden{display:none!important}.notice{padding:13px;border-radius:12px;background:#f4efe4;color:#614d2d;font-size:13px;line-height:1.45;margin:12px 0}
+.program-banner{background:var(--navy);color:white;border-radius:15px;padding:16px;margin-bottom:14px}.program-banner strong{display:block;font:22px Georgia,serif;margin-bottom:4px}.program-banner span{font-size:13px;color:#e5d6b9}
+.panel{background:#fff;border:1px solid var(--line);border-radius:16px;padding:15px;margin:12px 0;box-shadow:var(--shadow)}
+.panel h3{font:20px Georgia,serif;color:var(--navy);margin:0 0 12px}.slot{padding:13px 0;border-top:1px solid var(--line)}.slot:first-of-type{border-top:0}.slot h4{margin:0 0 7px;color:var(--gold);font-size:12px;letter-spacing:1px;text-transform:uppercase}.slot-song{font-weight:750;font-size:16px}.slot-tone{color:var(--muted);font-size:13px;margin-top:4px}.empty{color:#8a939b;font-size:14px;font-style:italic}
+.field-label{display:block;font-size:13px;font-weight:750;color:var(--navy);margin:12px 0 6px}
+footer{text-align:center;color:#8a9299;font-size:12px;padding:20px 8px}
+.toast{position:fixed;bottom:18px;left:50%;transform:translateX(-50%);background:#172d40;color:#fff;padding:12px 18px;border-radius:99px;font-size:13px;box-shadow:var(--shadow);z-index:10;max-width:90%;text-align:center}
+.back{margin:0 0 12px}
+.readonly-tag{display:inline-block;background:#eaf2ed;color:#246b55;border-radius:20px;padding:5px 10px;font-size:11px;font-weight:800;margin-bottom:10px}
+@media(max-width:420px){.actions{grid-template-columns:1fr}.search-row{grid-template-columns:1fr 112px}.song{align-items:flex-start}.song .btn{padding:8px 9px;font-size:12px;min-height:36px}}
+@media print{header,.no-print,.back,footer{display:none!important}body{background:white}.panel,.program-banner{box-shadow:none;break-inside:avoid}main{max-width:none;padding:0}.program-banner{background:#fff;color:#102b46;border:1px solid #ccc}.program-banner span{color:#555}.slot{break-inside:avoid}}
+</style>
+</head>
+<body>
+<header><div class="brand-mark">✦ ✚ ✦</div><div class="brand">Cancionero San Francisco</div><div class="subtitle">Convento San Francisco de Chillán</div></header>
+<main id="app">
+<section id="home">
+ <div class="hero">
+  <p>Un cancionero para acompañar nuestra oración y servicio en comunidad.</p>
+  <div class="actions">
+   <button class="btn btn-primary" onclick="showOfficial()">Ver Programa Oficial Compartido</button>
+   <button class="btn btn-gold" onclick="showBuilder()">Armar / Editar Programa</button>
+  </div>
+ </div>
+ <div class="panel">
+  <h3>¿Tienes un código de programa?</h3>
+  <div style="display:flex;gap:8px"><input id="codeInput" placeholder="Pega aquí el código" autocomplete="off"><button class="btn btn-primary" onclick="openCode()">Abrir</button></div>
+  <div class="notice">El código de esta versión contiene los datos del programa. Puedes pegarlo aquí o abrir directamente el enlace que te compartieron.</div>
+ </div>
+ <h2 class="section-title">Índice del cancionero</h2>
+ <div class="search-row"><input id="search" placeholder="Buscar canción..." oninput="renderCategories()"><select id="toneFilter" onchange="renderCategories()"><option value="">Todos los tonos</option></select></div>
+ <div id="categories"></div>
+</section>
+<section id="builder" class="hidden">
+ <button class="btn btn-light back no-print" onclick="showHome()">← Volver al cancionero</button>
+ <h2 class="section-title">Armar Programa Oficial</h2>
+ <div class="notice">Completa los cinco momentos de la celebración. Las selecciones se guardan como borrador en este dispositivo hasta que publiques el enlace para compartirlo.</div>
+ <div class="panel">
+  <label class="field-label" for="sundayDate">Fecha del Domingo</label><input id="sundayDate" type="date">
+  <label class="field-label" for="programNote">Nota corta (opcional)</label><textarea id="programNote" rows="2" placeholder="Ej.: Misa de las 11:00 hrs."></textarea>
+ </div>
+ <div id="builderSlots"></div>
+ <button class="btn btn-gold btn-block" onclick="publishProgram()">Publicar / Compartir Programa</button>
+ <button class="btn btn-light btn-block" onclick="clearDraft()">Vaciar programa</button>
+</section>
+<section id="official" class="hidden">
+ <button class="btn btn-light back no-print" onclick="showHome()">← Volver al cancionero</button>
+ <div class="program-banner"><strong>Estás viendo el Programa Oficial Compartido</strong><span id="programDateLabel"></span></div>
+ <div id="officialContent"></div>
+ <div class="panel no-print">
+  <h3>Compartir programa</h3>
+  <button class="btn btn-green btn-block" onclick="shareWhatsApp()">Compartir por WhatsApp</button>
+  <button class="btn btn-light btn-block" onclick="copyLink()">Copiar Link</button>
+  <button class="btn btn-light btn-block" onclick="copyCode()">Copiar Código</button>
+  <button class="btn btn-light btn-block" onclick="window.print()">Imprimir</button>
+  <button class="btn btn-primary btn-block" onclick="window.print()">Guardar PDF</button>
+  <div class="notice">Para guardar como PDF, selecciona “Guardar como PDF” en el menú de impresión del teléfono o computador.</div>
+ </div>
+</section>
+<footer>ALABAR · SERVIR · EVANGELIZAR · AMAR<br>Convento San Francisco de Chillán</footer>
+</main>
+<script>
+const CATALOG = [{"name":"ENTRADA","songs":[{"name":"ABRE TU JARDIN","key":"RE"},{"name":"YO TE ALABO","key":"RE"},{"name":"ACLARO","key":"DO"},{"name":"QUÉ BELLO ES","key":"DO"},{"name":"HAZ CANTAR TU VIDA","key":"MI"},{"name":"VIENEN CON ALEGRIA","key":"DO"},{"name":"QUE ALEGRIA","key":"MI"},{"name":"TRES COSAS TIENE EL AMOR","key":"DO"},{"name":"MENSAJERO DE LA PAZ","key":"LAM"},{"name":"DEN AL SEÑOR SUS ALABANZAS","key":"SOL"},{"name":"VENGAN A EL","key":"REM"},{"name":"TANTOS HOMBRES","key":"LA"},{"name":"HEY","key":"SOL"},{"name":"DIOS TRINO","key":"LA"},{"name":"SEÑOR QUIEN ENTRARA","key":"RE"},{"name":"HOY LLEGAMOS A CASA","key":"SOL"},{"name":"HIMNO A LA ALEGRIA","key":"LA"},{"name":"BENDECID A DIOS","key":"DO"},{"name":"PUEDO CONFIAR EN EL SEÑOR","key":"DO"},{"name":"JUNTOS COMO HERMANOS","key":"DO"},{"name":"JOVENES, CRISTOS, JOVENES","key":"LA"},{"name":"SOMOS UN PUEBLO QUE CAMINA","key":"SOL"},{"name":"ALEGRATE JERUSALEN","key":"RE"},{"name":"IGLESIA PEREGRINA","key":"LA"},{"name":"UN MANDAMIENTO","key":"DO"},{"name":"OYE PADRE","key":"REM"},{"name":"BENDECIRE AL SEÑOR","key":"DO"},{"name":"RENDID A YAHVE","key":"RE"},{"name":"VEN SEÑOR NO TARDES","key":"RE"},{"name":"EL SEÑOR HOY NOS REÚNE","key":"LA"},{"name":"HACIA TI MORADA SANTA","key":"LA"},{"name":"VENGA TU REINO","key":"LA"}]},{"name":"PERDÓN","songs":[{"name":"TEN PIEDAD DE MÍ","key":"LA"},{"name":"HOY PERDONAME","key":"DO"},{"name":"KIRYE (MIM)","key":"MI"},{"name":"SEÑOR TEN PIEDAD (REM)","key":"RE"},{"name":"PERDON SEÑOR (RE)","key":"RE"},{"name":"SEÑOR TEN PIEDAD (SOL)","key":"SOL"},{"name":"TEN PIEDAD DE MÍ SEÑOR (TROTE)","key":"SIM"},{"name":"OH SEÑOR TEN PIEDAD (RE-MI)","key":"RE"},{"name":"SEÑOR TEN PIEDAD (DO)","key":"DO"},{"name":"SEÑOR TEN PIEDAD (RE)","key":"RE"},{"name":"OH SEÑOR (REM)","key":"RE"},{"name":"SEÑOR TEN PIEDAD (REM)","key":"RE"},{"name":"SEÑOR TEN PIEDAD (VALS)","key":"LA"},{"name":"SEÑOR TEN PIEDAD (SOL)","key":"SOL"},{"name":"SEÑOR TEN PIEDAD","key":"DO"}]},{"name":"GLORIA","songs":[{"name":"GLORIA","key":"LA"},{"name":"GLORIA A DIOS EN EL CIELO","key":"RE"},{"name":"GLORIA TRINITARIO","key":"REM"},{"name":"GLORIA, ALABANZAS","key":"SOL"},{"name":"GLORIA A DIOS EN LAS ALTURAS","key":"DO"},{"name":"GLORIA A DIOS","key":"DO"},{"name":"GLORIA","key":"LA"},{"name":"GLORIA GRANDE ES SU AMOR","key":"REM"},{"name":"GLORIA GIOMBINI","key":"DO"},{"name":"(TODOS)","key":"LAM"}]},{"name":"ALELUYA","songs":[{"name":"ALELUYA (DO)","key":"DO"},{"name":"ALELUYA TODA LA TIERRA","key":"MIM"},{"name":"LA FIESTA DEL SEÑOR (MI)","key":"MI"},{"name":"ALELUYA VIVO ESTAS (RE)","key":"RE"},{"name":"ALELUYA (MI)","key":"MI"},{"name":"HAY GOZO (MI)","key":"MI"},{"name":"ALELUYA (RE)","key":"RE"},{"name":"CANTA ALELUYA AL SEÑOR","key":"LAM"},{"name":"EL SEÑOR RESUCITO","key":"SEGÚN PARTITURA"},{"name":"ALELUYA (CORRIDO)","key":"LA"},{"name":"ALELUYA","key":"RE"},{"name":"ALEUYA GLORIA ALELUYA","key":"DO"},{"name":"ALELUYA GLORIA AL SEÑOR","key":"RE"}]},{"name":"DESP. EVANGELIO Y HOMILÍA","songs":[{"name":"SI ALGUNO TIENE SED","key":"MI"},{"name":"DIOS HA HABLADO","key":"MIM"},{"name":"DONDE HAY AMOR","key":"RE"},{"name":"HERMOSA","key":"MI"},{"name":"TU PALABRA ME DA VIDA","key":"DO"},{"name":"BENDITA","key":"DO"},{"name":"AMOR, AMOR","key":"MIM"},{"name":"DIOS ESTA AQUI","key":"DO"},{"name":"ESPERO CONFIADO","key":"MIM"},{"name":"CAMINARE","key":"REM"},{"name":"UN MANDAMIENTO NUEVO","key":"DO"},{"name":"ALABE TODO EL MUNDO","key":"DO"},{"name":"MARAVILLOSO ES","key":"SOL"},{"name":"ESTOY PENSANDO EN DIOS","key":"RE"},{"name":"EN TI, EN TI","key":"RE"},{"name":"PREPARAD","key":"LA"},{"name":"VEN, VEN SEÑOR","key":"RE"},{"name":"SI YO NO TENGO AMOR","key":"RE"},{"name":"EL SEÑOR ES MI PASTOR","key":"DO"},{"name":"YO LE RESUCITARE","key":"MI"},{"name":"LUZ DE CRISTO","key":"RE"},{"name":"SIENTO TU LLAMADA","key":"SEGÚN PARTITURA"},{"name":"EL SEÑOR ES LA ESPERANZA","key":"LA"},{"name":"EL PADRE NOS HABLA","key":"SEGÚN PARTITURA"},{"name":"CANTAD DANDO GRACIAS","key":"MI"},{"name":"HONOR Y GLORIA","key":"SEGÚN PARTITURA"},{"name":"GLORIA A TI SEÑOR.","key":"MI"},{"name":"OH CRISTO","key":"SEGÚN PARTITURA"},{"name":"ESTA AQUÍ","key":"SI"},{"name":"EL ME AMO","key":"SEGÚN PARTITURA"},{"name":"OH SANTO DIOS","key":"DO"},{"name":"TU PALABRA SEÑOR ES LA","key":"LA"},{"name":"ACTO DE AMOR","key":"DO"},{"name":"NO FIJEIS","key":"DO"},{"name":"INUNDA MI SER","key":"DO"},{"name":"COMO EL PADRE ME AMÓ","key":"RE"},{"name":"VUELVAN LOS OJOS","key":"SEGÚN PARTITURA"},{"name":"ALLANAD","key":"LAM"},{"name":"EL PEREGRINO DE EMAÚS","key":"SOL"},{"name":"EL TESTIGO","key":"SOL"},{"name":"NO ME ELIGIERON USTEDES","key":"REM"},{"name":"MISERICORDIA","key":"LAM"},{"name":"EN TI CONFÍA MI CORAZÓN","key":"DO"},{"name":"RESUCITÓ","key":"DO"},{"name":"LAS MISERICORDIAS DEL SEÑOR","key":"LAM"},{"name":"MISERICORDIOSOS COMO EL PADRE","key":"LAM"},{"name":"TEN PIEDAD SEÑOR","key":"LAM"},{"name":"QUE TE ALABEN LOS PUEBLOS","key":"LA"},{"name":"ALABARE","key":"RE"},{"name":"ERES TÚ JESÚS","key":"LAM"},{"name":"SEÑOR ESCUCHANOS","key":"DO"},{"name":"LOS PASOS DE JESÚS","key":"DO"},{"name":"SEÑOR DIOS NUESTRO","key":"DO"},{"name":"LUZ DE CRISTO","key":"LA"},{"name":"SIGUEME","key":"LA"},{"name":"DEMOS GRACIAS","key":"LA"},{"name":"NADA TE TURBE","key":"LA"},{"name":"MARGARITAS","key":"RE"},{"name":"SEÑOR A QUIEN IREMOS","key":"DO"},{"name":"YO CREO EN LAS PROMESAS","key":"DO"},{"name":"YO SOY EL BUEN PASTOR","key":"LA"},{"name":"HUMILLATE","key":"SIM"},{"name":"GUSTAD Y VED","key":"LAM"},{"name":"VIVE","key":"DO"},{"name":"GRACIAS POR IR A MI LADO","key":"RE"},{"name":"JESUS AMIGO","key":"DO"},{"name":"PALABRAS DE VIDA ETERNA","key":"SIM"},{"name":"EL SEÑOR ES MI LUZ","key":"MI"}]},{"name":"OFERTORIO","songs":[{"name":"DESPUES DE PREPARAR","key":"RE"},{"name":"SABEMOS QUE VENDRAS","key":"DO"},{"name":"TE OFRECEMOS SEÑOR NUESTRA JUVENTUD","key":"DO"},{"name":"CINCO PANES","key":"LA"},{"name":"PAN DE NUESTRO AMOR","key":"LA"},{"name":"EN TU ALTAR","key":"DO"},{"name":"TOMAD SEÑOR Y RECIBID","key":"RE"},{"name":"NEGRA ES LA UVA","key":"SIM"},{"name":"NEGRA ES LA UVA","key":"LAM"},{"name":"TODOS LOS PROBLEMAS","key":"DO"},{"name":"OFRENDA DE AMOR","key":"LA"},{"name":"BENDITO SEAS","key":"RE"},{"name":"TE OFRECEMOS, PADRE","key":"LA"},{"name":"TE CONSAGRO","key":"SOL"},{"name":"COME ESTE PAN","key":"SEGÚN PARTITURA"},{"name":"TE OFRECEMOS OH SEÑOR","key":"DO"},{"name":"RECIBE, OH DIOS","key":"DO"},{"name":"TOMA MI OFRENDA","key":"MI"},{"name":"TE OFREZCO","key":"MI"},{"name":"JUNTOS COMO HERMANOS","key":"MI"},{"name":"JUNTOS NOS ACERCAMOS","key":"DO"},{"name":"RECIBEME","key":"RE"},{"name":"NO ME HABEIS VOSOTROS ELEGIDO","key":"DO"},{"name":"UNA ESPIGA","key":"RE"},{"name":"EN TUS MANOS DIVINAS","key":"SEGÚN PARTITURA"}]},{"name":"SANTO","songs":[{"name":"SANTO DIGNO DE ALABANZA","key":"MIM"},{"name":"SANTO (SIM)","key":"SI"},{"name":"SANTO GEN ROSSO (MIM)","key":"MI"},{"name":"SANTO DIOS DEL UNIVERSO (SOL-SIM-DO-RE)","key":"SOL"},{"name":"SANTO, SEÑOR DE GLORIA Y PODER","key":"LA"},{"name":"SANTO (BIANCHI) VALS","key":"MI"},{"name":"SANTO","key":"LA"},{"name":"SANTO LOS ANGELES CANTAN","key":"RE"},{"name":"CIELO Y TIERRA (REM)","key":"RE"},{"name":"SANTO TROTE","key":"LA"},{"name":"SANTO OH OH OH","key":"SIM"},{"name":"TODO TIENE TU HUELLA","key":"LA"},{"name":"SANTO (SIM TROTE)","key":"SI"},{"name":"SANTO GRAN GOZO","key":"RE"},{"name":"SANTO CAMPANARIO","key":"RE"}]},{"name":"PADRE NUESTRO","songs":[{"name":"TRADICIONAL","key":"LAM"},{"name":"JUVENIL","key":"SOL"},{"name":"PADRE NUESTRO – LITURGICO","key":"LA"}]},{"name":"PAZ","songs":[{"name":"PAZ","key":"SOL"},{"name":"DAME LA MANO","key":"DO"},{"name":"PAZ SEÑOR","key":"RE"},{"name":"PAZ EN LA TIERRA","key":"DO"},{"name":"MENSAJERO DE LA PAZ","key":"LAM"},{"name":"LA PAZ PARA TI","key":"SIM"},{"name":"QUE SEA LA PAZ","key":"DO"},{"name":"SU AMOR ESTÁ CORRIENDO YA","key":"RE"},{"name":"LA PAZ ESTE CON NOSOTROS","key":"LAM"},{"name":"PAZ","key":"LA"}]},{"name":"CORDERO","songs":[{"name":"CORDERO DE DIOS (TROTE)","key":"RE7"},{"name":"CORDERO (DO-MIM)","key":"DO"},{"name":"CORDERO (DO-LAM-FA)","key":"DO"},{"name":"CORDERO (REM-LAM-SOL) POLKA","key":"RE"},{"name":"CORDERO (REM)","key":"RE"},{"name":"CORDERO (SOL-DO RE)","key":"SOL"},{"name":"CORDERO DE DIOS","key":"LA"},{"name":"CORDERO","key":"LA"},{"name":"CORDERO DE DIOS (RE)","key":"RE"},{"name":"DIOS DE AMOR","key":"SOL"},{"name":"CORDERO MAIA","key":"REM"}]},{"name":"COMUNIÓN","songs":[{"name":"MILAGRO DE AMOR","key":"SOL"},{"name":"PAN DE VIDA","key":"RE"},{"name":"SOLO PARA QUE VIVAS","key":"DO"},{"name":"CADA VEZ QUE TE RECIBO","key":"MI"},{"name":"EL SEÑOR NOS HA AMADO","key":"RE"},{"name":"HACIENDOTE PAN","key":"LAM"},{"name":"HAMBRE DE DIOS","key":"DO"},{"name":"YO LE RESUCITARE","key":"SOL"},{"name":"DE MI VIDA QUIERO HACER","key":"DO"},{"name":"QUIERO ALABARTE","key":"DO"},{"name":"YO SOY","key":"LA"},{"name":"EUCARISTIA","key":"LA"},{"name":"JESUS AMIGO","key":"SOL"},{"name":"PESCADOR DE HOMBRES","key":"DO"},{"name":"QUIERO CANTAR","key":"DO"},{"name":"MI IDEAL","key":"LA"},{"name":"ESTOY PENSANDO EN DIOS","key":"DO"},{"name":"AMAR ES ENTREGARSE","key":"RE"},{"name":"SI YO NO TENGO AMOR","key":"RE"},{"name":"CRISTO TE NECESITA","key":"SIM"},{"name":"SIGUEME","key":"DO"},{"name":"TU SIEMPRE VAS CONMIGO","key":"SOL"},{"name":"YA NO TEMO","key":"DO"},{"name":"JESUS ESTOY AQUÍ","key":"DO"},{"name":"EN TI SEÑOR","key":"RE"},{"name":"ORACION DE UNIDAD","key":"RE"},{"name":"CONSOLAD","key":"DO"},{"name":"VEN Y SIGUEME","key":"SOL"},{"name":"ALMA MISIONERA","key":"MI"},{"name":"TE ALABO A TI","key":"DO"},{"name":"VIVE DIOS","key":"LAM"},{"name":"ERES REAL","key":"SOL"},{"name":"MI GETSEMANI","key":"RE"},{"name":"HAZ QUE VEA TU ROSTRO","key":"LAM"},{"name":"SAGRADO CORAZON","key":"SOL"},{"name":"NO SABIA","key":"DO"},{"name":"HE PENSADO","key":"RE"},{"name":"EL ALFARERO","key":"DO"},{"name":"ANGELES","key":"DO"},{"name":"SALMO DE LA CREACION","key":"SOL"},{"name":"PADRE AMERINDIO","key":"SOL"},{"name":"AMAME SEÑOR","key":"LA"},{"name":"MI PENSAMIENTO ERES TU","key":"RE"},{"name":"TE ALABO EN VERDAD","key":"RE"},{"name":"OH GLORIFICA A DIOS","key":"LA"},{"name":"TE SEGUIRE DONDE TU VAYAS","key":"LA"},{"name":"ME TOCASTE JESUS","key":"SOL"},{"name":"ORACIÓN SIMPLE","key":"DO"},{"name":"AMOR TAN GRANDE","key":"LA"},{"name":"NADIE TE AMA COMO YO","key":"DO"},{"name":"VEN AMADA MIA","key":"LAM"},{"name":"HOY TE QUIERO ALABAR","key":"MI"},{"name":"NO FIJEIS","key":"DO"},{"name":"SOY UN GRANO DE ARENA","key":"MI"},{"name":"ALELUYA POR ESA GENTE","key":"MI"},{"name":"DANOS UN CORAZON","key":"LAM"},{"name":"YO SOY EL CAMINO FIRME","key":"LAM"},{"name":"YO TENGO UN NUEVO AMOR","key":"MI"},{"name":"DIME SEÑOR","key":"DO"},{"name":"DIA Y NOCHE","key":"MI"},{"name":"TAN CERCA DE MI","key":"LA"},{"name":"¿COMO LE CANTARE?","key":"DO"},{"name":"PESCADOR","key":"LAM"},{"name":"YAHVE","key":"MI"},{"name":"EL AMOR DE CRISTO NOS REUNE","key":"LA"},{"name":"GRACIAS A DIOS","key":"RE"},{"name":"BENDIGAMOS AL SEÑOR","key":"LA"},{"name":"JESUS ESTA VIVO","key":"SOL"},{"name":"EL PROFETA","key":"LAM"},{"name":"LA ORACION","key":"SIM"},{"name":"TE DECLARO MI AMOR","key":"RE"},{"name":"DEJATE","key":"DO"},{"name":"JESUS YO TE AMO","key":"DO"},{"name":"SEA POR SIEMPRE","key":"SEGÚN PARTITURA"},{"name":"YA NO ERES PAN Y VINO","key":"DO"},{"name":"VIVO SOLO PARA DIOS","key":"LA"},{"name":"TU QUE HABITAS","key":"LA"},{"name":"TU MI ALFARERO","key":"LAM"},{"name":"ESTO QUE SOY ESO TE DOY","key":"LA"},{"name":"EL PEREGRINO DE EMAUS","key":"LAM"},{"name":"TU MODO","key":"RE"},{"name":"ABANDONATE","key":"MIM"},{"name":"CANCION AL CORAZON DE JESUS","key":"RE"},{"name":"MISIONEROS DEL 2000","key":"RE"},{"name":"ALMA DE CRISTO","key":"RE"},{"name":"YO TENGO FE","key":"RE"},{"name":"QUÉ MISIÓN TAN GRANDE","key":"DO"},{"name":"EL SEÑOR ES MI PASTOR","key":"SOL"},{"name":"UNA LUZ","key":"DO"},{"name":"POR LA SENDA","key":"LA"},{"name":"PAZ EN LA TORMENTA","key":"RE"},{"name":"SI AMO MI VIDA","key":"SI"},{"name":"CAMINO VERDAD Y VIDA","key":"MI"},{"name":"CONFÍO EN TI","key":"MI"},{"name":"ESTÁS DENTRO DE MÍ","key":"MI"},{"name":"ENTRE TUS MANOS","key":"MI"},{"name":"PEQUEÑAS ACLARACIONES","key":"LA"},{"name":"VIDA EN ABUNDANCIA","key":"MI"},{"name":"AMAR Y MÁS AMAR","key":"LA"},{"name":"MAESTRO BUENO","key":"LA"}]},{"name":"MARÍA","songs":[{"name":"MAGNIFICAT","key":"SOL"},{"name":"QUIERO DECIR QUE SI","key":"LA"},{"name":"LA ELEGIDA","key":"RE"},{"name":"UN DIA DEL CIELO UN ANGEL","key":"MI"},{"name":"VIRGEN DEL CARMEN BELLA","key":"DO"},{"name":"NUESTRA SRA. DE AMERICA","key":"LAM"},{"name":"JUNTO A TI MARIA","key":"RE"},{"name":"MARÍA DE NAZARET","key":"DO"},{"name":"MARIA ES ESA MUJER","key":"SOL"},{"name":"MADRE DEL SILENCIO","key":"LAM"},{"name":"MADRE DE LOS JOVENES","key":"REM"},{"name":"CANTICO DE MARIA","key":"RE"},{"name":"SANTA MARIA DEL CAMINO","key":"DO"},{"name":"MARIA MIRAME","key":"DO"},{"name":"MADRE DEL MUNDO","key":"DO"},{"name":"SANTA MARIA DEL AMEN","key":"LAM"},{"name":"VENID Y VAMOS TODOS","key":"SOL"},{"name":"VEN Y REINA","key":"DO"},{"name":"MARIA DE LA ALIANZA","key":"LA"},{"name":"OH MARIA","key":"MI"},{"name":"ACORDES MISTERIOS","key":"RE"},{"name":"CONTIGO MARIA","key":"RE"},{"name":"AVE MARIA","key":"DO"},{"name":"DIJISTE SI","key":"DO"},{"name":"DIOS TE SALVE MARIA","key":"LA"},{"name":"REINA DEL TAMARUGAL","key":"MIM"},{"name":"STA. MARIA DE LA ESPERANZA","key":"MIM"},{"name":"MARIA AUXILIADORA","key":"RE"},{"name":"OH MARIA, MADRE MIA","key":"LA"},{"name":"MIRA QUE TE MIRA","key":"SOL"},{"name":"EN FÁTIMA APARECISTE","key":"LA"},{"name":"MISTERIOS","key":"LA"},{"name":"MARAVILLAS HIZO EN MÍ","key":"LAM"}]},{"name":"ESPÍRITU SANTO","songs":[{"name":"FUEGO DE DIOS","key":"RE"},{"name":"ESPÍRITU SANTO VEN","key":"RE"},{"name":"ESPÍRITU DE DIOS","key":"MIM"},{"name":"ESPIRITU SANTO VEN AQUÍ","key":"RE"},{"name":"DULCE HUESPED","key":"RE"},{"name":"INUNDA MI SER","key":"DO"},{"name":"VEN, VEN ESPIRITU DIVINO","key":"LAM"},{"name":"VEN ESPIRITU DE SANTIDAD","key":"REM"},{"name":"QUEDATE EN MI","key":"RE"},{"name":"SECUENCIA PENTECOSTES","key":"DO"},{"name":"VEN ESPIRITU DE DIOS","key":"SOL"}]},{"name":"NAVIDAD","songs":[{"name":"A LAS DOCE DE LA NOCHE","key":"LA"},{"name":"GLORIACANTAN","key":"RE"},{"name":"SALMO:","key":"DO"},{"name":"VAYAMOS CRISTIANOS","key":"DO"},{"name":"EL TAMBORILERO","key":"DO"},{"name":"BURRITO SABANERO","key":"RE"},{"name":"NACE UN NIÑO EN UN PORTAL","key":"LA"},{"name":"GLORIA CANTAD","key":"SOL"},{"name":"LA RONDA DE LA ESTRELLA","key":"SOL"},{"name":"NOCHE DE PAZ","key":"SOL"},{"name":"CAMPANA SOBRE CAMPANA","key":"SOL"},{"name":"VEN A CANTAR","key":"RE"},{"name":"ORACION DE NAVIDAD","key":"RE"},{"name":"(JESUS HECHO NIÑO)","key":"MIM"},{"name":"CANTEN CON GOZO","key":"DO"},{"name":"SALMO NAVIDAD","key":"DO"},{"name":"LA PEREGRINACIÓN","key":"LA"}]},{"name":"ANIMACIÓN","songs":[{"name":"ALZAD LAS MANOS","key":"LA"},{"name":"ESTA ES LA GENTE QUE ALABA","key":"DO"},{"name":"VAMOS A ALABAR AL SEÑOR","key":"DO"},{"name":"SI TUVIERAS FE","key":"RE"},{"name":"EL AMOR DE DIOS","key":"DO"},{"name":"YO TENGO UN AMIGO","key":"LA"},{"name":"MIS MANOS","key":"MI"},{"name":"MI DIOS ESTÁ VIVO","key":"RE"},{"name":"VIVA LA FE","key":"DO"}]},{"name":"ADORACIÓN","songs":[{"name":"CANTEMOS AL AMOR","key":"DO"},{"name":"ADOREMOS","key":"SEGÚN PARTITURA"}]},{"name":"ORACIÓN POR CHILE","songs":[{"name":"CHILE UNA MESA PARA TODOS","key":"RE"},{"name":"VEN SR. DE LAS ALTAS MONTAÑAS","key":"SIM"}]},{"name":"DÍA DEL PADRE / MADRE","songs":[{"name":"MAMÁ, MAMÁ (LOS NOCHEROS)","key":"LAM"},{"name":"CUANTO TRABAJO (MERCEDES SOSA)","key":"MIM"},{"name":"HOY HE VUELTO","key":"LA"},{"name":"VIEJO MI QUERIDO VIEJO (PIERO)","key":"LAM"},{"name":"CON UNA PALA Y UN SOMBRERO","key":"MI"},{"name":"GRACIAS A LA VIDA","key":"LAM"}]},{"name":"HIMNOS","songs":[{"name":"CANTO A SANTA RITA","key":"DO"},{"name":"CANCION A SAN JUAN BAUTISTA","key":"MI"},{"name":"HIMNO SANTA TERESA","key":"LA"},{"name":"HIMNO A SANTA CLARA","key":"DO"},{"name":"CLARA, HIJA DE LUZ","key":"MI"},{"name":"EL TALLER DE NAZARETH","key":"LA"},{"name":"CRUZ DE MAYO","key":"LA"}]},{"name":"MIÉRCOLES DE CENIZA","songs":[{"name":"CON ESTAS CENIZAS","key":"SIM"},{"name":"PERDON OH DIOS MIO","key":"MIM"}]},{"name":"JUEVES SANTO","songs":[{"name":"LAVA MIS PIES SEÑOR","key":"SOL"}]},{"name":"VIGILIA PASCUAL","songs":[{"name":"PREGÓN PASCUAL","key":"RE"},{"name":"SALMO 103","key":"SOL"},{"name":"SALMO 15","key":"RE"},{"name":"EXODO 15","key":"RE"},{"name":"SALMO 29","key":"FA#M"},{"name":"ISAIAS 12","key":"SOL"},{"name":"SALMO 18","key":"SIM"},{"name":"SALMO 41","key":"MI"},{"name":"EPISTOLA","key":"RE"}]},{"name":"FUNERALES","songs":[{"name":"RECIBAN SU ALMA","key":"DO"},{"name":"EL SEÑOR ES MI PASTOR","key":"SOL"}]},{"name":"CANCIONES FRANCISCANAS","songs":[{"name":"TODO HOMBRE SIMPLE","key":"RE"},{"name":"NUESTRO IDEAL","key":"LA"},{"name":"FRANCISCO HOY","key":"DO"},{"name":"SEMBRANDO PAZ, SEMBRANDO BIEN","key":"RE"},{"name":"LE LLAMAN JESÚS","key":"SOL"},{"name":"TÚ, MI PILAR","key":"DO"},{"name":"¿QUÉ MÁS QUIERES?","key":"SOL"},{"name":"SI NO CUESTA NADA","key":"RE"},{"name":"SI CONOCIERAS EL DON DE DIOS","key":"DO"},{"name":"DULCE MARÍA","key":"DO"},{"name":"HIMNO MISIÓN 2000","key":"RE"},{"name":"PAZ EN LA TORMENTA","key":"RE"},{"name":"EN MI DEBILIDAD","key":"RE"},{"name":"A TI, OH DIOS","key":"DOM"},{"name":"RENACER EN LIBERTAD","key":"SOLM"},{"name":"PLEGARIA SIMPLE","key":"DO"},{"name":"TANTOS HOMBRES","key":"LA"},{"name":"TE ALABO A TI","key":"DO"},{"name":"PADRE AMERINDIO","key":"SOL"},{"name":"PADRE NUESTRO MISIONERO","key":"SOL"},{"name":"ESTA ES LA GENTE QUE ALABA","key":"DO"},{"name":"TRES COSAS TIENE EL AMOR","key":"DO"},{"name":"NADIE TE AMA COMO YO","key":"DO"},{"name":"CANTA FRANCISCO","key":"DO"},{"name":"SÍGUEME, SOY CAMINO","key":"DO"},{"name":"CANTA CON NOSOTROS","key":"SOL"},{"name":"SANTA MARÍA DE LA ESPERANZA","key":"MIM"},{"name":"DONDE HAY AMOR Y CARIDAD","key":"RE"},{"name":"QUE SEA LA PAZ","key":"DO"},{"name":"DIOS ESTÁ AQUÍ","key":"DO"},{"name":"POR LOS NIÑOS","key":"LA"},{"name":"JESÚS ESTOY AQUÍ","key":"DO"},{"name":"PADRE NUESTRO CANTADO","key":"DO"},{"name":"ME TOCASTE JESÚS","key":"SOL"},{"name":"TUYO SOY","key":"RE"},{"name":"ACLARO","key":"DO"},{"name":"SALMO DE LA CREACIÓN","key":"SOL"},{"name":"NO FIJÉIS LOS OJOS","key":"DO"},{"name":"ALZAD LAS MANOS","key":"LA"},{"name":"TENEMOS TANTO","key":"SOL"},{"name":"CRISTO ESTÁ PRESENTE","key":"MI"},{"name":"ROCK DEL ESPÍRITU","key":"LA"},{"name":"GRANITO DE MOSTAZA","key":"RE"},{"name":"VEN Y SÍGUEME","key":"SOL"},{"name":"ESTOY CONFIANDO","key":"RE"},{"name":"VEN Y SÍGUEME (MAESTRO BUENO)","key":"LA"},{"name":"EL ALFARERO","key":"DO"},{"name":"YO TE ALABO CON EL CORAZÓN","key":"RE"},{"name":"YO TENGO UN GOZO EN EL ALMA","key":"RE"},{"name":"ALELUYA DEL AMOR","key":"MI"},{"name":"AMAOS","key":"RE"},{"name":"CRISTOS JÓVENES","key":"LA"},{"name":"VIVA LA GENTE","key":"SOL"},{"name":"DEN GLORIA A DIOS","key":"SOL"},{"name":"HIMNO DE LA ALEGRÍA","key":"LA"},{"name":"RENDID A YAVÉ","key":"RE"},{"name":"HACES NUEVAS TODAS LAS COSAS","key":"LA"},{"name":"LA CANCIÓN DEL MISIONERO","key":"MI"},{"name":"JUNTO A TI MARÍA","key":"RE"},{"name":"CANTA MI ALMA AL SEÑOR","key":"SOL"},{"name":"EL APÓSTOL","key":"DO"},{"name":"ABRE TU JARDÍN","key":"RE"},{"name":"JESUCRISTO","key":"REM"},{"name":"ALÉGRATE JERUSALÉN","key":"RE"},{"name":"BENDECID A DIOS","key":"DO"},{"name":"CONSOLAD","key":"DO"},{"name":"EN TI, EN TI","key":"RE"},{"name":"QUÉ BELLO ES","key":"DO"}]}];
+const SLOTS = [
+ {id:"entrada",label:"1. Canto de Entrada",category:"ENTRADA"},
+ {id:"evangelio",label:"2. Evangelio",category:"DESP. EVANGELIO Y HOMILÍA"},
+ {id:"ofertorio",label:"3. Ofertorio",category:"OFERTORIO"},
+ {id:"comunion",label:"4. Comunión",category:"COMUNIÓN"},
+ {id:"final",label:"5. Canto Final",category:null}
+];
+let draft={date:"",note:"",songs:{entrada:null,evangelio:null,ofertorio:null,comunion:null,final:null}};
+let activeProgram=null, activeToken="";
+const $=id=>document.getElementById(id);
+function esc(s){return String(s??"").replace(/[&<>"']/g,c=>({"&":"&amp;","<":"&lt;",">":"&gt;",'"':"&quot;","'":"&#39;"}[c]));}
+function allTones(){return [...new Set(CATALOG.flatMap(c=>c.songs.map(s=>s.key)))].sort((a,b)=>a.localeCompare(b,"es"));}
+function init(){
+ $("toneFilter").innerHTML='<option value="">Todos los tonos</option>'+allTones().map(t=>`<option>${esc(t)}</option>`).join("");
+ const params=new URLSearchParams(location.search); const token=params.get("p");
+ if(token){try{const p=decodeToken(token);activeProgram=p;activeToken=token;showOfficial();}catch(e){toast("El enlace o código no es válido.");}}
+ else{renderCategories();loadDraft();}
+}
+function renderCategories(){
+ const q=$("search").value.trim().toLocaleLowerCase("es"), tone=$("toneFilter").value;
+ $("categories").innerHTML="";
+ CATALOG.forEach((cat,idx)=>{
+  const songs=cat.songs.map((s,i)=>({...s,index:i})).filter(s=>(!q||s.name.toLocaleLowerCase("es").includes(q))&&(!tone||s.key===tone));
+  if(!songs.length)return;
+  const wrap=document.createElement("section");wrap.className="category";
+  const head=document.createElement("button");head.className="cat-head";head.innerHTML=`<span>${String(idx+1).padStart(2,"0")}. ${esc(cat.name)} <small>(${cat.songs.length})</small></span><span class="chev">＋</span>`;
+  const list=document.createElement("div");list.className="song-list hidden";
+  head.onclick=()=>{list.classList.toggle("hidden");head.querySelector(".chev").textContent=list.classList.contains("hidden")?"＋":"−";};
+  songs.forEach(s=>{
+   const row=document.createElement("div");row.className="song";
+   row.innerHTML=`<div class="song-main"><div class="song-name">${esc(s.name)}</div><span class="tone">${esc(s.key)}</span></div><button class="btn btn-light btn-small" onclick="addSong(${idx},${s.index})">Agregar al Programa</button>`;
+   list.appendChild(row);
+  });
+  wrap.append(head,list);$("categories").appendChild(wrap);
+  if(q||tone){list.classList.remove("hidden");head.querySelector(".chev").textContent="−";}
+ });
+ if(!$("categories").children.length)$("categories").innerHTML='<div class="empty">No se encontraron canciones con esos filtros.</div>';
+}
+function showSection(id){["home","builder","official"].forEach(x=>$(x).classList.toggle("hidden",x!==id));window.scrollTo(0,0);}
+function showHome(){showSection("home");renderCategories();}
+function showBuilder(){if(activeProgram){draft={date:activeProgram.date||"",note:activeProgram.note||"",songs:JSON.parse(JSON.stringify(activeProgram.songs))};}else{loadDraft();}renderBuilder();showSection("builder");}
+function showOfficial(){if(!activeProgram){toast("Abre un enlace compartido o pega un código de programa.");return;}renderOfficial();showSection("official");}
+function addSong(ci,si){
+ const cat=CATALOG[ci],song=cat.songs[si];
+ let allowed=SLOTS.filter(s=>s.id==="final"||s.category===cat.name);
+ if(!allowed.length){toast("Esta categoría no corresponde a los cuatro momentos con categoría fija. Puedes usarla para el Canto Final.");allowed=[SLOTS[4]];}
+ const opts=allowed.map((s,i)=>`${i+1}. ${s.label}`).join("\n");
+ const answer=prompt(`¿En qué apartado deseas agregar “${song.name}”?\n${opts}\n\nEscribe el número:`);
+ if(answer===null)return;const slot=allowed[Number(answer)-1];if(!slot){toast("Selección no válida.");return;}
+ draft.songs[slot.id]={name:song.name,key:song.key,category:cat.name};saveDraft();toast(`Agregada a ${slot.label}.`);
+}
+function renderBuilder(){
+ $("sundayDate").value=draft.date||"";
+ $("programNote").value=draft.note||"";
+ $("builderSlots").innerHTML=SLOTS.map(slot=>{
+  const s=draft.songs[slot.id];
+  return `<div class="panel"><h3>${esc(slot.label)}</h3>${s?`<div class="slot-song">${esc(s.name)}</div><div class="slot-tone">Tono: ${esc(s.key)} · ${esc(s.category)}</div>`:'<div class="empty">Aún no has seleccionado una canción.</div>'}<button class="btn btn-light btn-small" style="margin-top:10px" onclick="chooseSlot('${slot.id}')">${s?'Cambiar canción':'Elegir canción'}</button>${s?` <button class="btn btn-light btn-small" onclick="removeSlot('${slot.id}')">Quitar</button>`:''}</div>`;
+ }).join("");
+}
+function chooseSlot(id){
+ const slot=SLOTS.find(s=>s.id===id);
+ let cats=slot.category?CATALOG.filter(c=>c.name===slot.category):CATALOG;
+ let choices=[];cats.forEach(c=>c.songs.forEach((s,i)=>choices.push({name:s.name,key:s.key,category:c.name})));
+ const q=prompt(`Buscar canción para ${slot.label}. Escribe parte del nombre:`);
+ if(q===null)return;
+ const matches=choices.filter(s=>s.name.toLocaleLowerCase("es").includes(q.toLocaleLowerCase("es")));
+ if(!matches.length){toast("No se encontraron coincidencias.");return;}
+ let shown=matches.slice(0,35);
+ const pick=prompt(shown.map((s,i)=>`${i+1}. ${s.name} [${s.key}]`).join("\n")+(matches.length>35?`\n…Mostrando 35 de ${matches.length}.`:"")+"\n\nEscribe el número:");
+ const chosen=shown[Number(pick)-1];if(!chosen)return;
+ draft.songs[id]=chosen;saveDraft();renderBuilder();
+}
+function removeSlot(id){draft.songs[id]=null;saveDraft();renderBuilder();}
+function saveDraft(){draft.date=$("sundayDate")?.value||draft.date;draft.note=$("programNote")?.value||draft.note;try{localStorage.setItem("csf_draft",JSON.stringify(draft));}catch(e){}}
+function loadDraft(){try{const d=JSON.parse(localStorage.getItem("csf_draft")||"null");if(d&&d.songs)draft=d;}catch(e){}}
+function clearDraft(){if(!confirm("¿Vaciar los cinco apartados del borrador?"))return;draft={date:"",note:"",songs:{entrada:null,evangelio:null,ofertorio:null,comunion:null,final:null}};saveDraft();renderBuilder();}
+$("sundayDate").addEventListener("change",saveDraft);$("programNote").addEventListener("input",saveDraft);
+function encodeToken(obj){const bytes=new TextEncoder().encode(JSON.stringify(obj));let bin="";bytes.forEach(b=>bin+=String.fromCharCode(b));return btoa(bin).replace(/\+/g,"-").replace(/\//g,"_").replace(/=+$/,"");}
+function decodeToken(token){let b=token.replace(/-/g,"+").replace(/_/g,"/");while(b.length%4)b+="=";const bin=atob(b),bytes=Uint8Array.from(bin,c=>c.charCodeAt(0));return JSON.parse(new TextDecoder().decode(bytes));}
+function publishProgram(){
+ saveDraft();
+ if(!draft.date){toast("Selecciona la Fecha del Domingo.");$("sundayDate").focus();return;}
+ const missing=SLOTS.filter(s=>!draft.songs[s.id]);
+ if(missing.length){toast("Completa los cinco apartados antes de publicar.");return;}
+ const payload={v:1,date:draft.date,note:draft.note||"",songs:draft.songs};
+ activeProgram=payload;activeToken=encodeToken(payload);
+ const url=new URL(location.href);url.search="";url.hash="";url.searchParams.set("p",activeToken);
+ history.replaceState(null,"",url.toString());
+ renderOfficial();showSection("official");
+ toast("Programa publicado. Comparte el enlace generado.");
+}
+function renderOfficial(){
+ const p=activeProgram;
+ $("programDateLabel").textContent="Domingo: "+formatDate(p.date)+(p.note?" · "+p.note:"");
+ $("officialContent").innerHTML=SLOTS.map(slot=>{
+  const s=p.songs[slot.id];
+  return `<div class="panel"><div class="slot"><h4>${esc(slot.label)}</h4><div class="slot-song">${esc(s?.name||"Sin canción")}</div><div class="slot-tone">Tono: ${esc(s?.key||"—")}</div></div></div>`;
+ }).join("");
+}
+function formatDate(d){if(!d)return "Fecha no indicada";const [y,m,day]=d.split("-").map(Number);return new Date(y,m-1,day).toLocaleDateString("es-CL",{weekday:"long",year:"numeric",month:"long",day:"numeric"});}
+function getShareUrl(){const u=new URL(location.href);u.search="";u.hash="";u.searchParams.set("p",activeToken);return u.toString();}
+function copyText(t){if(navigator.clipboard?.writeText){navigator.clipboard.writeText(t).then(()=>toast("Copiado al portapapeles.")).catch(()=>fallbackCopy(t));}else fallbackCopy(t);}
+function fallbackCopy(t){const a=document.createElement("textarea");a.value=t;document.body.append(a);a.select();document.execCommand("copy");a.remove();toast("Copiado.");}
+function copyLink(){copyText(getShareUrl());}
+function copyCode(){copyText(activeToken);}
+function shareWhatsApp(){const msg=`Programa Oficial del Domingo\n${formatDate(activeProgram.date)}\n${getShareUrl()}`;window.open("https://wa.me/?text="+encodeURIComponent(msg),"_blank");}
+function openCode(){const t=$("codeInput").value.trim();if(!t){toast("Pega el código del programa.");return;}try{activeProgram=decodeToken(t);activeToken=t;const u=new URL(location.href);u.searchParams.set("p",t);history.pushState(null,"",u.toString());showOfficial();}catch(e){toast("Código no válido. Comprueba que esté completo.");}}
+function toast(msg){const el=document.createElement("div");el.className="toast";el.textContent=msg;document.body.append(el);setTimeout(()=>el.remove(),2600);}
+init();
+</script>
+</body></html>
